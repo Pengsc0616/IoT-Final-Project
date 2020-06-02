@@ -1,0 +1,15 @@
+Notice that most JS files are readily usable for any project, so we only have to modify ida.js to suit our specific IoT device.
+
+How to use:
+1) Go to 5.iottalk.tw and make a project containing a smartphone with acceleration IDF and dummy device with dummy_control ODF
+2) Link the IDF to the ODF, make the function so that the entire Array(3) is passed on
+3) Open index.html (device name: imadummydevice) and a smartphone, then link them in the project
+4) Go to the dummy device webpage, open the console and watch the smartphone acceleration data
+
+Result: Just showing how to make a functioning output device
+
+
+Extra:
+> Data received on dummy device slightly deviates from what is shown in iottalk project page, but it makes no difference
+> Moved device name definition from dan.js to ida.js to include it in 'profile' object (ease of access)
+> Output mac_addr to console at start just in case
