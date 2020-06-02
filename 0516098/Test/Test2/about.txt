@@ -1,0 +1,12 @@
+Test2:
+Try to measure the time interval between data received at the output device when the input device provides a continuous stream of data.
+(find out how fast IoTTalk can send and receive data)
+
+How to use:
+1) Open input device "input_dummy_XXXXXX" in cmd (python Dummy_Device_sender/DAI.py)
+2) Open output device "output_dummy_YYYYYY" (Dummy_Device_receiver/index.html)
+3) Make a project in 5.iottalk.tw with a dummy device having both IDF and ODF, and link them accordingly
+4) As DAI.py sends data every 0.2 seconds, watch how fast IoTTalk can receive it (watch the join node), as well as how fast the ODF can receive it (watch console)
+
+Result:
+IoTTalk receives data every 1~2 seconds, and our dummy output device receives data every 1.5~2 seconds. With this much lag, realtime games cannot function properly through IoTTalk.
