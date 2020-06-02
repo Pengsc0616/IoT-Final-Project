@@ -1,0 +1,9 @@
+So with a 1.5~2 second data interarrival time, the game will lag. But how much? Here we make a simulation with the game (without actually connecting to IoTTalk, simply setting an interarrival time and seeing how the game goes with this much latency).
+
+Steps:
+1) Open index.js and set the parameters ${sim_mode} and ${interval}
+2) Open index.html and play the game. See how it turns out.
+3) Tweak the parameters some more and observe the game's behavior.
+
+Result:
+Even just 300 ms delay can mess up the game, 1.5 seconds is literally unplayable.
