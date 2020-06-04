@@ -17,7 +17,7 @@ while True:
     try:
         IDF_data = random.uniform(1, 10)
         DAN.push ('Dummy_Sensor', IDF_data) #Push data to an input device feature "Dummy_Sensor"
-        print(IDF_data)
+#        print(IDF_data)
 
         #==================================
 

@@ -35,6 +35,7 @@ def push(mac_addr, df_name, data, UsingSession=IoTtalk):
         headers = {'password-key': passwordKey}
     )
     if r.status_code != 200: raise CSMError(r.text)
+    else: print("Value: {}, Status code: {}".format(data,r.status_code))
     return True
 
 
