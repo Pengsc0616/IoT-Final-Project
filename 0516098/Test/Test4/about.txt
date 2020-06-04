@@ -1,0 +1,6 @@
+To put a nail in the coffin, here's a demo of controlling the game character using the IoTTalk smartphone cyberdevice.
+
+Steps:
+1) Go to 5.iottalk.tw and make a project with a smartphone and a dummy device (ODF), join them using 'passon' function (shown in Test1)
+2) Open 'Smartphone' cyberdevice in your smartphone and index.html in your pc, then link them in IoTTalk (device name in webpage title)
+3) Play the game (modified for testing purposes) (see the console for data arrival times)
