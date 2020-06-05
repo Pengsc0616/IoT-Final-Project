@@ -1,0 +1,824 @@
+{
+   "avastAppDesc": {
+      "description": "max 132 chars are allowed for this message",
+      "message": "Avast দ্বারা দামের তুলনা ও ডিসকাউন্ট কুপনের এক্সটেনশনের সাথে অনলাইনে কেনাকাটা করার সময় সেরা দাম, ডিল ও কুপন খুঁজুন।"
+   },
+   "avastAppLongName": {
+      "message": "Avast SafePrice |মূল্যের তুলনা, ডিল এবং নিরাপদ শপিং সাইটগুলির কুপন - অর্থ সংগ্রহ"
+   },
+   "avastAppName": {
+      "message": "Avast SafePrice"
+   },
+   "avastAppShortName": {
+      "message": "Avast SafePrice | তুলনা, ডিল, কুপন"
+   },
+   "avgAppDesc": {
+      "description": "max 132 chars are allowed for this message",
+      "message": "AVG দ্বারা দামের তুলনা ও ডিসকাউন্ট কুপনের এক্সটেনশনের সাথে অনলাইনে কেনাকাটা করার সময় সেরা দাম, ডিল ও কুপন খুঁজুন।AVG"
+   },
+   "avgAppLongName": {
+      "message": "Avast SafePrice |মূল্যের তুলনা, ডিল এবং নিরাপদ শপিং সাইটগুলির কুপন - অর্থ সংগ্রহ"
+   },
+   "avgAppName": {
+      "message": "AVG SafePrice"
+   },
+   "avgAppShortName": {
+      "message": "AVG SafePrice | তুলনা, ডিল, কুপন"
+   },
+   "safePriceAskMeLater": {
+      "description": "It is showed to the user on the rating screen in order to offer it to rate extension later",
+      "message": "আমাকে পরে জিজ্ঞাসা করুন"
+   },
+   "safePriceContinueShopping": {
+      "description": "It is showed to the user on the rating screen to offer the chance of continue purchasing",
+      "message": "কেনাকাটা চালিয়ে যান"
+   },
+   "safePriceEnjoyQuestion_AVG": {
+      "description": "It is showed to offer the user the chance of rating our shopping extension",
+      "message": "Avast SafePrice-এর ব্যবহার উপভোগ করছেন?"
+   },
+   "safePriceEnjoyQuestion_Avast": {
+      "description": "It is showed to offer the user the chance of rating our shopping extension",
+      "message": "Avast SafePrice-এর ব্যবহার উপভোগ করছেন?"
+   },
+   "safePriceLeaveRating": {
+      "description": "It is showed to offer the user the chance of rating our shopping extension",
+      "message": "আপনার ভালোবাসা দেখাতে আমাদের রেট দিন।"
+   },
+   "safeShopBestButtonNextOffer": {
+      "message": "পরবর্তী প্রস্তাব %s এখানে %s"
+   },
+   "safeShopBestButtonSave": {
+      "message": "%s-এ %s %sবাঁচান"
+   },
+   "safeShopBestTitleBestHere": {
+      "message": "সর্বোত্তম প্রস্তাব এখানে!"
+   },
+   "safeShopBestTitleCheaperFound": {
+      "message": "সর্বনিম্ন দাম পাওয়া গেছে!"
+   },
+   "safeShopBestTitleSimilarFound": {
+      "message": "অনুরূপ হোটেল পাওয়া গেছে!"
+   },
+   "safeShopCoupons": {
+      "message": "%s কুপন সমূহ"
+   },
+   "safeShopOffers": {
+      "message": "%s প্রস্তাব শুরু হচ্ছে %s"
+   },
+   "safeShopPopularHotelIn": {
+      "description": "%s is the price + currency. Example: Popular hotels from 200,00 €",
+      "message": "%s থেকে জনপ্রিয় হোটেলগুলি"
+   },
+   "safeShopSimilarHotel": {
+      "description": "%s is the amount of hotels found. Example: 4 similar hotels",
+      "message": "%sটি অনুরূপ হোটেল"
+   },
+   "sasAnswerNo": {
+      "message": "না"
+   },
+   "sasAnswerYes": {
+      "message": "হ্যাঁ"
+   },
+   "sasClickToCopy": {
+      "message": "অনুলিপি করতে ক্লিক করুন"
+   },
+   "sasCouponAppliedOnPage": {
+      "message": "এই পৃষ্ঠায় প্রযোজ্য কুপন"
+   },
+   "sasCouponCodeCopied": {
+      "message": "কোড ক্লিপবোর্ডে অনুলিপি করা হয়েছে"
+   },
+   "sasCouponCodeTitle": {
+      "message": "কুপন সংকেত"
+   },
+   "sasCouponInstructionsTitle": {
+      "message": "কুপন পুনরুদ্ধার করার প্রক্রিয়াসমূহ"
+   },
+   "sasCouponsSaving": {
+      "message": "সংরক্ষণ করুন সর্বোচ্চ %s"
+   },
+   "sasCouponsTitle": {
+      "message": "%s কুপন পাওয়া যাচ্ছে!"
+   },
+   "sasGladYouLike": {
+      "message": "আপনার পছন্দ হয়েছে শুনে ভাল লাগল!"
+   },
+   "sasHide": {
+      "message": "লুকান"
+   },
+   "sasHintBestOffer": {
+      "message": "সর্বোত্তম প্রস্তাব"
+   },
+   "sasHintBestOfferDesc": {
+      "message": "এই পণ্যটির জন্য সরাসরি সর্বোত্তম মূল্যে যাবে."
+   },
+   "sasHintCoupons": {
+      "message": "কুপন সমূহ দেখুন"
+   },
+   "sasHintCouponsDesc": {
+      "message": "কুপন সমূহ দেখুন এবং সংরক্ষণ"
+   },
+   "sasHintOtherOffers": {
+      "message": "মূল্যসমূহ তুলনা"
+   },
+   "sasHintOtherOffersDesc": {
+      "message": "অন্যান্য তুলনাযোগ্য প্রস্তাবসমূহ দেখুন"
+   },
+   "sasHintSettings": {
+      "message": "সেটিংস"
+   },
+   "sasHintSettingsDesc": {
+      "message": "এখানে আপনার সেটিংসমূহ পরিবর্তন করুন"
+   },
+   "sasNoCouponCode": {
+      "message": "কোনো কোড দরকার নেই"
+   },
+   "sasOpenShop": {
+      "message": "খোলা দোকান"
+   },
+   "sasOptionsDisableAll": {
+      "message": "সব সাইটে 24 ঘন্টার জন্য SafePrice নিষ্ক্রিয় করুন"
+   },
+   "sasOptionsDisableOnSite": {
+      "message": "%s এ 24 ঘন্টার জন্য SafePrice নিষ্ক্রিয় করুন"
+   },
+   "sasOptionsEnableAll": {
+      "description": "Message that allow the user to enable SP if it was deactivated for 24H for all domains",
+      "message": "সব সাইটেই SafePrice চালু করুন"
+   },
+   "sasOptionsEnableOnSite": {
+      "description": "Message that allow the user to enable SP if it was deactivated for 24H for one domain. %s: name of the domain",
+      "message": "%s এ SafePrice চালু করুন"
+   },
+   "sasOptionsNeverShowOnSite": {
+      "message": "টিকিট দেখাবেনা এখানে %s"
+   },
+   "sasProductName": {
+      "message": "SafePrice"
+   },
+   "sasPromoAction": {
+      "message": "সব ঠিক আছে, বার্তাটি বন্ধ করুন"
+   },
+   "sasPromoDescription_AVG": {
+      "message": "আপনি যে জিনিস কিনছেন Avast SafePrice স্বয়ংক্রিয়ভাবে সমগ্র ওয়েব জুড়ে সেটির দাম তুলনা করে আপনার জন্য সবচেয়ে সেরাটা খুঁজে বের করে।"
+   },
+   "sasPromoDescription_Avast": {
+      "message": "আপনি যে জিনিস কিনছেন Avast SafePrice স্বয়ংক্রিয়ভাবে সমগ্র ওয়েব জুড়ে সেটির দাম তুলনা করে আপনার জন্য সবচেয়ে সেরাটা খুঁজে বের করে।"
+   },
+   "sasPromoNewBadge": {
+      "message": "নতুন"
+   },
+   "sasPromoOptout": {
+      "message": "SafePrice অক্ষম করুন"
+   },
+   "sasPromoTitle_AVG": {
+      "message": "Avast SafePrice কিভাবে কাজ করে"
+   },
+   "sasPromoTitle_Avast": {
+      "message": "Avast SafePrice কিভাবে কাজ করে"
+   },
+   "sasRate": {
+      "message": "এখন রেট দিন"
+   },
+   "sasRecommendedOfferMessage": {
+      "message": "প্রস্তাবিত"
+   },
+   "sasRecommendedOfferTitle": {
+      "message": "এই বিশ্বস্ত রিটেইলার  সঙ্গত মূল্যে, উচ্চমানের পরিষেবা প্রদান করেন এবং নামডাকও আছে."
+   },
+   "sasSPInstalled": {
+      "message": "\u003Cb>Avast SafePrice\u003C/b> প্রস্তুত। আপনার কেনাকাটা শুভ হোক!"
+   },
+   "sasSPTooltipText": {
+      "message": "আপনার প্রিয় কেনাকাটার সাইটগুলিতে সন্ধান করার সময় আপনি সেরা ডিলগুলি দেখবেন।"
+   },
+   "sasSPTooltipTitle": {
+      "message": "Avast SafePrice"
+   },
+   "sasSorry": {
+      "message": "শুনে দুঃখিত হলাম"
+   },
+   "sasStartingPrice": {
+      "description": "%s is the minimum value off the price. Example: Starting at: $124.00",
+      "message": "এত থেকে শুরু: %s"
+   },
+   "sasWhatToDo": {
+      "message": "আমরা উন্নতির জন্য কী করতে পারে?"
+   },
+   "sasfeedback": {
+      "message": "প্রতিক্রিয়া দিন"
+   },
+   "save": {
+      "message": "সাশ্রয় করুন"
+   },
+   "spAdditionalFees": {
+      "message": "অতিরিক্ত ফি ও কর প্রয়োগ হতে পারে"
+   },
+   "spAfterCloseTooltip": {
+      "description": "Small tooltips showed to the user after closing UI in order to remain users how to get UI back.",
+      "message": "আপনি টুলবার আইকনে ক্লিক করে সর্বদা সেফপ্রিস অফার এবং কুপনগুলি সন্ধান করতে পারেন।"
+   },
+   "spAfterCloseTooltipGotIt": {
+      "description": "Confirm message showed on Small tooltips showed to the user after closing UI in order to remain users how to get UI back.",
+      "message": "বুঝেছি!"
+   },
+   "spApply": {
+      "message": "কুপনের আবেদন জানান"
+   },
+   "spAvailableCoupons": {
+      "message": "উপলভ্য কুপন"
+   },
+   "spAvailableHotels": {
+      "message": "উপলভ্য হোটেল"
+   },
+   "spAvailableOffers": {
+      "message": "উপলভ্য অফার"
+   },
+   "spAvailableOthers": {
+      "message": "বিশেষ ডিল"
+   },
+   "spBetterOfferLowerPricesNotificationMessage": {
+      "message": "মাত্র এত দামে"
+   },
+   "spBetterOffersNotificationBarMessage": {
+      "message": "ওহ আরও অফার দেখুন!"
+   },
+   "spBetterOffersNotificationMessage": {
+      "message": "ওহ আরও অফার দেখুন!\u003Cbr>"
+   },
+   "spBetterSpecialDealsNotificationBarMessage": {
+      "message": "আরও ডিল, আরও সঞ্চয়!"
+   },
+   "spBetterSpecialDealsNotificationMessage": {
+      "message": "আরও ডিল,\u003Cbr> আরও সঞ্চয়!"
+   },
+   "spCityHotelNotificationMessage": {
+      "message": "জনপ্রিয় হোটেল:"
+   },
+   "spClickThenPaste": {
+      "message": "ক্লিক করুন, তারপর চেকআউট এ পেস্ট করুন:"
+   },
+   "spClickThenPasteSearchResult": {
+      "description": "%s is the name of the domain where coupon was applied",
+      "message": "ক্লিক করুন, তারপর চেকআউট \u003Cspan class='asp-shopname-span'>%s-\u003C/span>-তে পেস্ট করুন:"
+   },
+   "spCloseTooltip": {
+      "message": "বন্ধ"
+   },
+   "spCodeCopied": {
+      "message": "অনুলিপি করা হয়েছে"
+   },
+   "spConnectionNotSecure": {
+      "message": "এই সংযোগটি নিরাপদ নয়"
+   },
+   "spConnectionNotSecureHover": {
+      "message": "এই ওয়েবসাইটটিতে কোনো বৈধ https সার্টিফিকেট নেই, তাই এটি সম্পূর্ণরূপে আপনার গোপনীয়তা রক্ষা করতে পারে না।"
+   },
+   "spConnectionSecure": {
+      "message": "এই সংযোগটি নিরাপদ"
+   },
+   "spCopyAtCheckOut": {
+      "message": "চেকআউটে কপি ও প্রতিলেপন করুন:"
+   },
+   "spCouponApplied": {
+      "message": "কুপনের আবেদন জানানো হয়েছে।"
+   },
+   "spCouponCodeWorks": {
+      "message": "এই কোড কাজ করেছে?"
+   },
+   "spCouponWorks": {
+      "message": "এই কুপন কাজ করেছে?"
+   },
+   "spCouponsAvailableText": {
+      "message": "উপলভ্য"
+   },
+   "spCouponsElegibleFor": {
+      "message": "এর জন্য যোগ্য: "
+   },
+   "spCouponsExpiration": {
+      "message": "মেয়াদ উত্তীর্ণের তারিখ: "
+   },
+   "spCouponsFor": {
+      "description": "%s is the domain where the coupons can be applied",
+      "message": "%s এর জন্য কুপন"
+   },
+   "spCouponsNotificationMessage": {
+      "message": "কুপন ব্যবহারের জন্য অর্থ বাঁচান"
+   },
+   "spCouponsNotificationSaveTextMessage": {
+      "message": "এত পর্যন্ত সাশ্রয় করুন"
+   },
+   "spCouponsSearchIconHover": {
+      "message": "কুপনগুলি সন্ধান করুন"
+   },
+   "spCouponsSearchInput": {
+      "message": "ব্র্যান্ড অথবা অনলাইন স্টোরে খুঁজুন"
+   },
+   "spCouponsSelected": {
+      "message": "কুপন নির্বাচন করা হয়েছে: "
+   },
+   "spCouponsSelectedText": {
+      "message": "নির্বাচিত"
+   },
+   "spCouponsTab": {
+      "message": "কুপন সমূহ"
+   },
+   "spEShopName": {
+      "message": "ই-দোকানের নাম*"
+   },
+   "spFeedback": {
+      "message": "মতামত পাঠান"
+   },
+   "spFeedbackGeneral": {
+      "message": "সাধারণ প্রতিক্রিয়া"
+   },
+   "spFeedbackGeneralDesc": {
+      "message": "\nআপনার নিরাপদপ্রিয় অভিজ্ঞতা, আপনার কী পছন্দ হয়েছে এবং আমরা কী উন্নতি করতে পারি সে সম্পর্কে আমাদের বলুন।"
+   },
+   "spFeedbackLinkToProductPage": {
+      "message": "পণ্যের পাতাটিতে সংযুক্ত করুন"
+   },
+   "spFeedbackNext": {
+      "message": "পরবর্তী"
+   },
+   "spFeedbackOnlineStoreName": {
+      "message": "অনলাইন ভান্ডারের নাম *"
+   },
+   "spFeedbackOther": {
+      "message": "অন্যান্য"
+   },
+   "spFeedbackPaidAndNotGet": {
+      "message": "আপনি একটি পণ্যের জন্য অর্থপ্রদান করেছি এবং এটি পাইনি।"
+   },
+   "spFeedbackProblem": {
+      "message": "কী সমস্যা হয়েছে?  \u003Cspan class='asp-required-span'>(আবশ্যক)\u003C/span>"
+   },
+   "spFeedbackProductOrdered": {
+      "message": "পণ্য-এর অর্ডার দেওয়া হয়েছে"
+   },
+   "spFeedbackReportOnlineStore": {
+      "message": " অনলাইন স্টোর-এ প্রতিবেদন জমা করুন"
+   },
+   "spFeedbackReportOnlineStoreDesc": {
+      "message": "অবিশ্বাস্য বা জাল সাইট সম্পর্কে আমাদের বলুন যা অন্যদের জন্য ঝুঁকি হতে পারে।"
+   },
+   "spFeedbackRetailerMerchant": {
+      "message": "রিটেইলার বা মার্চেন্ট"
+   },
+   "spFeedbackSPExp": {
+      "message": "আপনার SafePrice অভিজ্ঞতার কথা জানান।"
+   },
+   "spFeedbackSend": {
+      "message": "প্রেরণ করুন"
+   },
+   "spFeedbackShare": {
+      "message": "আপনার মতামত শেয়ার করুন"
+   },
+   "spFeedbackSomethingDifferent": {
+      "message": "আমি যা অর্ডার করেছি তার থেকে আলাদা কিছু পেয়েছি।"
+   },
+   "spFeedbackThanks": {
+      "message": "আপনার মতামতের জন্য ধন্যবাদ।"
+   },
+   "spFeedbackWhatWasTheProblem": {
+      "message": "সংক্ষেপে বুঝিয়ে বলুন কি সমস্যা ছিল।"
+   },
+   "spFeedbackWhichOnlineStoreReporting": {
+      "message": "আপনি কোন অনলাইন স্টোরের রিপোর্ট করছেন? \u003Cspan class='asp-required-span'>(*আবশ্যক)\u003C/span>"
+   },
+   "spFeedbackWriteAComment": {
+      "message": "মন্তব্য লিখুন"
+   },
+   "spFeedbackback": {
+      "message": "ফিরে যান"
+   },
+   "spGetCouponCode": {
+      "message": "কোড পান"
+   },
+   "spGreatDeal": {
+      "message": "দারুণ ডিল"
+   },
+   "spHelpTooltip": {
+      "message": "সাহায্য"
+   },
+   "spITrustThisSite": {
+      "message": "আমি এই সাইটটিকে বিশ্বাস করি"
+   },
+   "spLeaveSite": {
+      "message": "সাইট ছেড়ে চলে যান"
+   },
+   "spLinkToProductPage": {
+      "message": "কোনো পণ্যের পৃষ্ঠার লিঙ্ক"
+   },
+   "spLoadingNotificationDescriptionMessage": {
+      "message": "এটি আমরা যে প্রতিশ্রুতি দিই সেই অপেক্ষার মূল্য রাখে।"
+   },
+   "spLoadingNotificationMessage": {
+      "message": "ডিল খোঁজা হচ্ছে..."
+   },
+   "spMinimizeTooltip": {
+      "message": "ক্ষুদ্রায়ন"
+   },
+   "spMoreOffersFound": {
+      "message": "আরও ছাড়গুলি খুঁজে পাওয়া গেছে:"
+   },
+   "spNoResultsFound": {
+      "description": "%s is the domain where we couldn't find coupons or can be also, what the user wrote on our seach input",
+      "message": "\u003Cbr> %s এর জন্য কোনও ফলাফল নেই"
+   },
+   "spNoResultsFoundCoupons": {
+      "description": "%s is the domain where we couldn't find coupons or can be also, what the user wrote on our seach input",
+      "message": "\u003Cbr> %s এর জন্য কোন কুপন পাওয়া যায়নি"
+   },
+   "spNoResultsFoundCouponsNow": {
+      "description": "%s is the domain where we couldn't find offer",
+      "message": "মুহূর্তে কোনো কুপন পাওয় যায়নি"
+   },
+   "spNoResultsFoundOffers": {
+      "description": "%s is the domain where we couldn't find offer",
+      "message": "এই মোমেন্টে কোন অফার পাওয়া যায়নি"
+   },
+   "spNoResultsFoundOffersBasedOnQuery": {
+      "description": "%s is the title of the product for which we couldn't find offers or can be also, what the user wrote on our seach input",
+      "message": "\u003Cbr> %s এর জন্য কোন অফার পাওয়া যায়নি"
+   },
+   "spNoresultsFoundForOthers": {
+      "message": "এই মুহূর্তে কোনও বিশেষ ডিল \u003Cbr> পাওয়া গেল না"
+   },
+   "spNothingFound": {
+      "message": "ওহ।\u003Cbr>কিছুই পাওয়া যায় নি…"
+   },
+   "spNothingFoundCoupons": {
+      "message": "ওহ হো...\u003Cbr>কোন কুপন পাওয়া যায়নি..."
+   },
+   "spNothingFoundOffers": {
+      "message": "ওহ হো...\u003Cbr>কোন অফার পাওয়া যায়নি..."
+   },
+   "spNothingFoundOthers": {
+      "message": "ওহ হো...\u003Cbr>কোন স্পেশাল ডিল পাওয়া যায়নি..."
+   },
+   "spNotificationRedirectShowLessMessage": {
+      "message": "কম"
+   },
+   "spNotificationRedirectShowMoreMessage": {
+      "message": "আরও"
+   },
+   "spNotificationRedirectShowRedirectMessage": {
+      "message": "ডিল দেখান"
+   },
+   "spOfferSaving": {
+      "description": "%s will be the saving percentage of the best offer. Ex: SAVE 25%",
+      "message": "%s সাশ্রয় করুন"
+   },
+   "spOffersAndCouponsNotificationMessage": {
+      "message": "অফার ও কুপন পাওয়া গেছে। আপনি ভাগ্যবান!"
+   },
+   "spOffersTab": {
+      "message": "অফার"
+   },
+   "spOnboardingSearchCoupons": {
+      "message": "এখানে কুপনগুলো খোঁজা শুরু করুন"
+   },
+   "spOnboardingSearchOffers": {
+      "message": "এখানে ডিলগুলো খোঁজা শুরু করুন"
+   },
+   "spOnboardingSettingsButton": {
+      "message": "ঠিক আছে"
+   },
+   "spOnboardingSettingsMsg": {
+      "message": "আপনি কত ঘন ঘন অফার ও কুপনগুলি দেখতে চান তা সেট করুন"
+   },
+   "spOptInPolice": {
+      "message": "SafePrice আপনি যে ওয়েবসাইটগুলিতে যান সেগুলি স্ক্যান করবে যাতে এটি আপনাকে যাচাই করা ই-শপগুলিতে আরও ভাল ডিল এবং ছাড়যুক্ত কুপন খুঁজে দিতে পারে। এই কার্যকারিতাটির জন্য, এর সার্ভারগুলিতে নিম্নলিখিত ডেটা প্রেরণ করা প্রয়োজন:"
+   },
+   "spOptInPolice1": {
+      "message": "শপিং সাইটের ডোমেন বা URL"
+   },
+   "spOptInPolice2": {
+      "message": "এক্সটেনশন শনাক্তকারী (GUID)"
+   },
+   "spOptInPolice3": {
+      "message": "ব্রাউজার ল্যাঙ্গুয়েজ"
+   },
+   "spOptInPoliceAccept": {
+      "message": "হ্যাঁ, ডেটা পাঠান"
+   },
+   "spOptInPoliceDeny": {
+      "message": "না, ধন্যবাদ"
+   },
+   "spOptInPoliceLink": {
+      "message": "সম্পূর্ণ তথ্যের জন্য \u003Ca href='#' class='opt-in-box-buttons-policy'> এক্সটেনশানের গোপনীয়তা নীতি \u003C/a> দেখুন।"
+   },
+   "spOptInSecondClose": {
+      "message": "বন্ধ করুন"
+   },
+   "spOptInSecondReviewConsent": {
+      "message": "সম্মতি পুনর্বিবেচনা করুন"
+   },
+   "spOptInSecondText": {
+      "message": "এটি ছাড়া এক্সটেনশন কাজ করবে না। আপনি এটি আনইনস্টল করতে পারেন।"
+   },
+   "spOptInSecondTitle": {
+      "message": "দুঃখিত, SafePrice আপনার সম্মতি ব্যতীত আপনাকে সস্তা দিলগুলো প্রদর্শন করতে পারবে না"
+   },
+   "spOptInTitle": {
+      "message": "আপনি যদি সম্মত হন তবে অনলাইনে কেনাকাটা করার সময় SafePrice আপনাকে কম দামের ডিল প্রদর্শন করবে"
+   },
+   "spOther": {
+      "message": "অন্যান্য"
+   },
+   "spOthersTab": {
+      "message": "অন্যান্য"
+   },
+   "spPhishingSite": {
+      "message": "এই সাইটটি একটি ফিশিং সাইট হিসাবে চিহ্নিত করা হয়েছে।"
+   },
+   "spPhishingSiteDesc": {
+      "message": "ফিশিংয়ের মাধ্যমে ইউজারনেম, পাসওয়ার্ড এবং ক্রেডিট কার্ডের তথ্যের মতো সংবেদনশীল তথ্য হাতিয়ে নেওয়ার চেষ্টা করা হয়..."
+   },
+   "spProductBestOfferTitle": {
+      "message": "সেরা দাম"
+   },
+   "spProductOrdered": {
+      "message": "পণ্য অর্ডার দেওয়া হয়েছে"
+   },
+   "spProductSimilarOffersTitle": {
+      "message": "অনুরূপ অফার"
+   },
+   "spProductsSearchIconHover": {
+      "message": "কোনো পণ্য সন্ধান করুন"
+   },
+   "spProductsSearchInput": {
+      "message": "প্রোডাক্ট খুঁজুন"
+   },
+   "spRateCouponsThanks": {
+      "message": "আপনাকে ধন্যবাদ।"
+   },
+   "spRecommend": {
+      "message": "পরামর্শ"
+   },
+   "spRecommendESHop": {
+      "message": "প্রস্তাবিত ই-দোকান"
+   },
+   "spRecommendExcellentSelectionOfProducts": {
+      "message": "তাদের একটি চমৎকার পণ্য নির্বাচন আছে।"
+   },
+   "spRecommendGreatCcustomerService": {
+      "message": "তাদের গ্রাহক পরিষেবা দারুণ।"
+   },
+   "spRecommendGreatValue": {
+      "message": "তারা একটি দারুণ মান প্রদান করে।"
+   },
+   "spRecommendWhy": {
+      "message": "আপনি কেন এই ই-দোকানের সুপারিশ করছেন?*"
+   },
+   "spReport": {
+      "message": "রিপোর্ট করুন"
+   },
+   "spReportESHop": {
+      "message": "ই-দোকানের রিপোর্ট করুন"
+   },
+   "spReportGetSomethingDifferent": {
+      "message": "আমি যা অর্ডার করেছি তার থেকে আলাদা কিছু পেয়েছি।"
+   },
+   "spReportPaidAndNotGet": {
+      "message": "আপনি একটি পণ্যের জন্য অর্থপ্রদান করেছি এবং এটি পাইনি।"
+   },
+   "spReportTreatedMePoorly": {
+      "message": "একজন গ্রাহক হিসেবে তারা আমার সাথে খারাপ ব্যবহার করেছে।"
+   },
+   "spReportWhy": {
+      "message": "আপনি কেন এই ই-দোকানের রিপোর্ট করছেন?*"
+   },
+   "spRequired": {
+      "message": "*আবশ্যক"
+   },
+   "spSearchCouponAppliedOnPage": {
+      "description": "%s is the name of the domain where coupon was applied",
+      "message": "কুপন \u003Cspan class='asp-shopname-span'>%s\u003C/span> প্রয়োগ করা হয়েছে।"
+   },
+   "spSearchForCoupons": {
+      "message": "কুপন পেতে, ব্র্যান্ড অথবা \u003Cbr> অনলাইন স্টোরে খুঁজুন"
+   },
+   "spSearchForOffers": {
+      "message": "অফার পেতে, কোনও \u003Cbr> প্রোডাক্ট খুঁজুন"
+   },
+   "spSearchInAmazon": {
+      "description": "%s is the name of the domain. Ex: amazon",
+      "message": "%s-এ খোঁজা শুরু করুন"
+   },
+   "spSelectedCoupons": {
+      "message": "নির্বাচিত কুপন"
+   },
+   "spSettingsPageAdvancedItemInclude": {
+      "description": "NOT IN USE",
+      "message": "এতে এগুলি রয়েছে: "
+   },
+   "spSettingsPageAdvancedItemIncludeAccomm": {
+      "description": "NOT IN USE",
+      "message": "বাসস্থান এবং পর্যটন"
+   },
+   "spSettingsPageAdvancedItemIncludeEShop": {
+      "description": "NOT IN USE",
+      "message": "ই-দোকান"
+   },
+   "spSettingsPageCancel": {
+      "message": "বাতিল করুন"
+   },
+   "spSettingsPageCustomList": {
+      "message": "কাস্টম তালিকা"
+   },
+   "spSettingsPageCustomListItemAdd": {
+      "message": "যুক্ত করুন"
+   },
+   "spSettingsPageCustomListItemAddSite": {
+      "message": "সাইট যোগ করুন"
+   },
+   "spSettingsPageCustomListTitle": {
+      "message": "এই ওয়েবসাইটগুলিতে কোন বিজ্ঞপ্তি প্রদর্শন করা হবে না:"
+   },
+   "spSettingsPageCustomListTitleDesc": {
+      "message": "(টুলবার আইকনে ক্লিক করে আপনি সর্বদা অফার ও কুপনগুলি দেখতে পারেন)"
+   },
+   "spSettingsPageHelp": {
+      "message": "সাহায্য"
+   },
+   "spSettingsPageHelpCouponsTitle": {
+      "message": "3. কুপন"
+   },
+   "spSettingsPageHelpCouponsTitleDesc": {
+      "message": "একটি কুপন ব্যবহার করতে, আপনাদের সবাইকে এতে ক্লিক করতে হবে। যদি এটি কোন কোড প্রকাশ করে তাহলে চেকআউটের সময়ে আপনাকে সঠিক ক্ষেত্রে এটি প্রতিলেপন করতে হবে। অন্যথায়, কুপন স্বয়ংক্রিয়ভাবে প্রয়োগ হবে।"
+   },
+   "spSettingsPageHelpFAQsTitle": {
+      "message": "\u003Cspan class='asp-faqs-span'>প্রায়শই জিজ্ঞাসিত প্রশ্নাবলীর\u003C/span>মধ্যে আরও জানুন।"
+   },
+   "spSettingsPageHelpNotificationsTitle": {
+      "message": "1. বিজ্ঞপ্তি"
+   },
+   "spSettingsPageHelpNotificationsTitleDesc": {
+      "message": "SafePrice ফান্ড যখন কোন অফার বা কুপন সংশ্লিষ্ট তথ্য আপনার সন্ধানের মধ্যে খোঁজে, তখন একটি বিজ্ঞপ্তি পপ আপ হয়। আমরা আপনার জন্য কী খুঁজেছি তা দেখতে বড় সবুজ বোতামে ক্লিক করুন।"
+   },
+   "spSettingsPageHelpOffersTitle": {
+      "message": "2. অফার"
+   },
+   "spSettingsPageHelpOffersTitleDesc": {
+      "message": "একটি অফারে ক্লিক করলে তা আপনাকে একজন অংশীদারের বিশ্বস্ত স্টোরে নিয়ে যাবে, যেখানে আপনি বিজ্ঞপ্তি সম্বন্ধে নতুন মূল্য তালিকা পাবেন।"
+   },
+   "spSettingsPageHelpOthersTitle": {
+      "message": "4. অন্যান্য"
+   },
+   "spSettingsPageHelpOthersTitleDesc": {
+      "message": "একটি তালিকাভুক্ত বিশেষ ডিলে ক্লিক করলে তা আপনাকে একজন বিশ্বস্ত অংশীদারের অনলাইন স্টোরে নিয়ে যাবে।"
+   },
+   "spSettingsPageSave": {
+      "message": "সংরক্ষণ করুন"
+   },
+   "spSettingsPageTitleAvast": {
+      "message": "Avast SafePrice সেটিংস"
+   },
+   "spSettingsPageTitleAvg": {
+      "message": "AVG SafePrice সেটিংস"
+   },
+   "spSettingsPrivacy": {
+      "message": "গোপনীয়তা"
+   },
+   "spSettingsPrivacyNotice": {
+      "message": "নতুন পণ্যের উন্নতিতে পণ্যের কার্য সম্পাদন বিশ্লেষণ ও ডেটা  ব্যবহারে অনুমতি দিন"
+   },
+   "spSettingsTabNotificationAccommodationsTitle": {
+      "message": "থাকার প্রস্তাব"
+   },
+   "spSettingsTabNotifications": {
+      "message": "বিজ্ঞপ্তি"
+   },
+   "spSettingsTabNotificationsAccommodationsPopular": {
+      "message": "অনুরোধ জানানো এলাকায় থাকা জনপ্রিয় হোটেলগুলি দেখান"
+   },
+   "spSettingsTabNotificationsAccommodationsShowBetter": {
+      "message": "দাম ভালো হোটেল যেখানেই সেগুলি সহজপ্রাপ্য দেখান"
+   },
+   "spSettingsTabNotificationsAccommodationsSimilar": {
+      "message": "আমাদের অনুরোধ জানানো হোটেলের বিকল্প হোটেল দেখান"
+   },
+   "spSettingsTabNotificationsCoupons": {
+      "message": "কুপন সমূহ"
+   },
+   "spSettingsTabNotificationsCouponsHide": {
+      "message": "কুপন সম্পর্কে আমাকে সূচিত করে না"
+   },
+   "spSettingsTabNotificationsCouponsHideDesc": {
+      "message": "(টুলবার আইকনে ক্লিক করে আপনি সর্বদা কুপনগুলি দেখতে পারেন)"
+   },
+   "spSettingsTabNotificationsCouponsShowAll": {
+      "message": "যখন কোন অফার উপলভ্য হয় তা দেখায়"
+   },
+   "spSettingsTabNotificationsCouponsShowOnce": {
+      "message": "কেবলমাত্র একবার প্রতিটি ওয়েবসাইট প্রদর্শন করে"
+   },
+   "spSettingsTabNotificationsOffers": {
+      "message": "অফার"
+   },
+   "spSettingsTabNotificationsOffersBetter": {
+      "message": "আসল মূল্যের চাইতে কোন ভালো অফার উপলভ্য হলেই কেবল দেখায়"
+   },
+   "spSettingsTabNotificationsOffersBetterThanLimit": {
+      "description": "NOT IN USE",
+      "message": "অন্তর  10  % সঞ্চয়ের অফারগুলিই কেবল দেখায়"
+   },
+   "spSettingsTabNotificationsOffersHideAll": {
+      "message": "ই-দোকান অফার সম্পর্কে আমাকে সূচিত করে না"
+   },
+   "spSettingsTabNotificationsOffersHideAllDesc": {
+      "message": "(টুলবার আইকনে ক্লিক করে আপনি সর্বদা অফারগুলি দেখতে পারেন)"
+   },
+   "spSettingsTabNotificationsOffersShowAll": {
+      "message": "যখন কোন অফার উপলভ্য হয় তা দেখায়"
+   },
+   "spSettingsTabNotificationsOffersTitle": {
+      "message": "ই-দোকান অফার"
+   },
+   "spSettingsTabNotificationsOthers": {
+      "message": "অন্যান্য"
+   },
+   "spSettingsTabNotificationsOthersDesc": {
+      "message": "অন্যান্য বিভাগের জন্য আমাকে বিশেষ ডিলগুলি সম্বন্ধে সূচিত করে (পরিবহন, ফাইন্যান্স, পাওয়ার সাপ্লাই এবং আরও অনেক কিছু)"
+   },
+   "spSettingsTabNotificationsOthersTitle": {
+      "message": "বিশেষ ডিল"
+   },
+   "spSettingsTooltip": {
+      "message": "সেটিংস"
+   },
+   "spShippingLabel": {
+      "message": "S/H থেকে"
+   },
+   "spShowAll": {
+      "message": "সব দেখান"
+   },
+   "spShowNotificationMessage": {
+      "message": "দেখান"
+   },
+   "spShowNotificationRedirectMessage": {
+      "message": "আমরা যা খুঁজছি দেখুন!"
+   },
+   "spSimilarHotelsMessage": {
+      "message": "অন্যান্য হোটেল"
+   },
+   "spSimilarHotelsNotificationMessage": {
+      "message": "বিকল্প হোটেল পাওয়া গেছে!"
+   },
+   "spSiteNotVerified": {
+      "message": "এই সাইটটি কেনাকাটা করার জন্য বিশ্বাসযোগ্য নয়"
+   },
+   "spSiteNotVerifiedHover": {
+      "message": "এই ওয়েবসাইটটিকে অবিশ্বস্ত হিসাবে চিহ্নিত করা হয়েছে। আমরা জেনেছি যে প্রত্যেক ডিল একটি নিরাপদ ওয়েবসাইট থেকে আসে, তাই আমরা আপনাকে উপরে অফারগুলির একটিতে ক্লিক করার পরামর্শ দিই, বা কেবল অন্য কোথাও চেষ্টা করুন।"
+   },
+   "spSiteUntrustworthy": {
+      "message": "এই ওয়েবসাইটটিকে অবিশ্বস্ত হিসেবে শনাক্ত করা হয়েছে"
+   },
+   "spSiteUntrustworthyDesc": {
+      "message": "আমরা অন্য কোথা থেকে আপনাকে কেনাকাটা করার পরামর্শ দিই, গ্রাহকরা এই সাইটটিতে খারাপ রেট দিয়েছেন।"
+   },
+   "spSiteVerified": {
+      "message": "এই সাইটটি যাচাই করা হয়েছে এবং এতে কেনাকাটা করা নিরাপদ"
+   },
+   "spSocialShare": {
+      "description": "It is showed up to users in order to make them share SafePrice on Social Networks",
+      "message": "উপভোগ করুন সংরক্ষণ করা হচ্ছে? প্রেম ছড়িয়ে দিন!"
+   },
+   "spSocialShareFb": {
+      "description": "It is showed up to users in order to make them share SafePrice on Facebook",
+      "message": "শেয়ার"
+   },
+   "spSocialSharetttr": {
+      "description": "It is showed up to users in order to make them share SafePrice on Twitter",
+      "message": "টুইট"
+   },
+   "spTellUsMore": {
+      "message": "আমাদের আরও বলুন"
+   },
+   "spThanksForVoting": {
+      "message": "আমাদের SafePrice ভালো করতে সাহায্য করার জন্য আপনাকে ধন্যবাদ"
+   },
+   "spTrySearchDeals": {
+      "description": "%s is the domain. Ex: Amazon.com",
+      "message": "%s-এ ডিল সন্ধানের চেষ্টা করুন"
+   },
+   "spTrySearchInAmazon": {
+      "description": "%s is the domain. Ex: Amazon.com",
+      "message": "%s-এ খোঁজা শুরু করুন"
+   },
+   "spUsabilityContinue": {
+      "message": "শুনে ভালো লাগছে!"
+   },
+   "spUsabilityDescriptionAVG": {
+      "message": "আপনি AVG SafePrice সম্বন্ধে কী ভাবছেন আমাদের বলুন এবং একটি $$35 Amazon গিফট সার্টিফিকেট পান।"
+   },
+   "spUsabilityDescriptionAvast": {
+      "message": "আপনি Avast SafePrice সম্বন্ধে কী ভাবছেন আমাদের বলুন এবং একটি $$35 Amazon গিফট সার্টিফিকেট পান।"
+   },
+   "spUsabilityTitle": {
+      "message": "আপনার মতামত মূল্যবান $$$$"
+   }
+}

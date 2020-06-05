@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "websafe-awesome";
+	/* Only include WOFF2, supported by Chrome 36+ */
+  src: url('websafe-awesome.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.wa {
+  display: inline-block;
+  font-family: "websafe-awesome";
+  font-style: normal;
+  font-weight: normal;
+  font-size: inherit;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wa-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.wa-2x { font-size: 2em; }
+.wa-3x { font-size: 3em; }
+.wa-4x { font-size: 4em; }
+.wa-5x { font-size: 5em; }
+.wa-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+.wa-fire:before { content: "\EA01" }
+.wa-bolt:before { content: "\EA02" }
+.wa-check:before { content: "\EA03" }
+.wa-chevron-left:before { content: "\EA04" }
+.wa-clock-o:before { content: "\EA05" }
+.wa-cog:before { content: "\EA06" }
+.wa-exclamation-triangle:before { content: "\EA07" }
+.wa-eye-slash:before { content: "\EA08" }
+.wa-list:before { content: "\EA09" }
+.wa-pencil:before { content: "\EA0A" }
+.wa-power-off:before { content: "\EA0B" }
+.wa-times:before { content: "\EA0C" }
+.wa-trash:before { content: "\EA0D" }
+.wa-undo:before { content: "\EA0E" }
+.wa-sign-out:before { content: "\EA0F" }
+.wa-question-circle:before { content: "\EA10" }
+.wa-chevron-up:before { content: "\EA11" }
+.wa-search:before { content: "\EA12" }
