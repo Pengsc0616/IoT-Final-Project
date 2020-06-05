@@ -1,7 +1,7 @@
 var dan = (function () {
     var RETRY_COUNT = 3;
     var RETRY_INTERVAL = 2000;
-    var POLLING_INTERVAL = 400;
+    var POLLING_INTERVAL = 500;
     var _pull;
 	var _push;
     var _mac_addr = '';

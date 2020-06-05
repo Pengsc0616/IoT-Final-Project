@@ -10,3 +10,13 @@ How to use:
 
 Result:
 IoTTalk receives data every 1~2 seconds, and our dummy output device receives data every 1.5~2 seconds. With this much lag, realtime games cannot function properly through IoTTalk.
+
+
+Test 2.1:
+Try changing the POLLING_INTERVAL parameter in dummy device receiver dan.js.
+
+Result:
+Changing POLLING_INTERVAL to 400 ms reduces interarrival latency to ~1.6 sec, but any lower and the DA won't receive anything at all. Increasing POLLING_INTERVAL to above 1 sec increases the interarrival time significantly as expected (for instance POLLING_INTERVAL=4000 makes dt=12 sec).
+
+Extra:
+> Modified sender's DAN.py to print status code for every message sent to make sure it actually arrives at the IoTTalk server.
