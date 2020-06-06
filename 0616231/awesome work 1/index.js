@@ -19,10 +19,20 @@ var status = 'running';
 
 function preload () {
 
-    game.load.baseURL = 'https://wacamoto.github.io/NS-Shaft-Tutorial/assets/';
-    //game.load.baseURL = 'https://Pengsc0616.'
+    //game.load.baseURL = 'https://wacamoto.github.io/NS-Shaft-Tutorial/assets/';
+    game.load.baseURL = 'https://github.com/Pengsc0616/IoT-Final-Project/tree/master/0616231/awesome%20work%201/assets/'
     game.load.crossOrigin = 'anonymous';
-    game.load.spritesheet('player', 'assets/player.png', 32, 32);
+    game.load.spritesheet('player', 'player.png/', 32, 32);
+    game.load.image('wall', 'wall.png/');
+    game.load.image('ceiling', 'ceiling.png/');
+    game.load.image('normal', 'normal.png/');
+    game.load.image('nails', 'nails.png/');
+    game.load.spritesheet('conveyorRight', 'conveyor_right.png/', 96, 16);
+    game.load.spritesheet('conveyorLeft', 'conveyor_left.png/', 96, 16);
+    game.load.spritesheet('trampoline', 'trampoline.png/', 96, 22);
+    game.load.spritesheet('fake', 'fake.png/', 96, 36);
+
+    /*game.load.spritesheet('player', 'assets/player.png', 32, 32);
     game.load.image('wall', 'assets/wall.png');
     game.load.image('ceiling', 'assets/ceiling.png');
     game.load.image('normal', 'assets/normal.png');
@@ -30,7 +40,7 @@ function preload () {
     game.load.spritesheet('conveyorRight', 'assets/conveyor_right.png', 96, 16);
     game.load.spritesheet('conveyorLeft', 'assets/conveyor_left.png', 96, 16);
     game.load.spritesheet('trampoline', 'assets/trampoline.png', 96, 22);
-    game.load.spritesheet('fake', 'assets/fake.png', 96, 36);
+    game.load.spritesheet('fake', 'assets/fake.png', 96, 36);*/
 }
 
 function create () {
