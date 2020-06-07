@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Smartphone</title>
+</head>
+
+<body>
+	<label for=""><span>accel_x</span><input type="text"></label><br>
+	<label for=""><span>accel_y</span><input type="text"></label><br>
+	<label for=""><span>accel_z</span><input type="text"></label><br>
+
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		window.mac = Math.random().toString().slice(2);
+		window.d_name = null;
+		var show_dname_one_time = 0;
+
+		var interval = 300; //this is the "PUSH"&"PULL" interval.
+
+		// IoTtalk register
+		var profile = {
+			'dm_name': 'Smartphone',
+			'df_list': ['Acceleration', 'Gyroscope', 'Orientation', 'Vibration', 'Humidity', 'UV', 'Alcohol', 'nonexistent'],
+		};
+		csmRegister(profile, iotUpdater);
+
+		// IoTtalk updater
+		function iotUpdater(ret) {
+			if (window.d_name == null) {
+				window.d_name = ret['d_name'];
+				document.title = ret['d_name'];
+				$('title').text(ret['d_name']);
+			}
+
+			if (window.d_name != null) {
+				let gyro = {
+					x: parseFloat($('input')[0].value) || 123,
+					y: parseFloat($('input')[1].value) || 456,
+					z: parseFloat($('input')[2].value) || 789,
+				} // brackets beautifier has problems with nullish coalescing operator ??, so use || instead
+				// note: parseFloat is necessary, otherwise IoTTalk will try to scale the string'd numbers and ERROR
+				let rndint1 = Math.floor(Math.random() * 100);
+				let rndint2 = Math.floor(Math.random() * 100);
+				let rnd_id = `s-${rndint1}-${rndint2}`;
+				var t = Date.now();
+				csmPush('Acceleration', ['Hello', 'World', ':)']);
+				csmPush('Gyroscope', [gyro.x, gyro.y, gyro.z]);
+				csmPush('Orientation', [rnd_id]);
+				csmPush('nonexistent', ["sneaky!"]);
+				// do strings work?
+				csmPull('Acceleration', (val) => {
+					console.log('Pull Acceleration:', val);
+					console.log('dt=' + (Date.now() - t))
+				});
+				// do numbers work?
+				csmPull('Gyroscope', (val) => console.log('Pull Gyroscope:', val));
+				// does a mix of string and numbers work?
+				csmPull('Orientation', (val) => console.log('Pull Orientation:', val));
+				// does a DF not in the device model work?
+				csmPull('nonexistent', (val) => console.log('Pull nonexistent:', val));
+
+			}
+
+			setTimeout(iotUpdater, interval);
+		}
+
+		// Detach when browser close
+		function detach() {
+			window.d_name = null;
+			csmDelete();
+		}
+		window.onunload = detach;
+		window.onbeforeunload = detach;
+		window.onclose = detach;
+		window.onpagehide = detach;
+	</script>
+</body></html>

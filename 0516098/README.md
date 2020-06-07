@@ -7,4 +7,7 @@ Added Test3 to see how lag affects the game.\
 \
 6/4\
 Added Test4 connecting IoTTalk Smartphone cyberdevice to game.\
-Added Test2.1 to test if reducing polling interval can reduce lag.
+Added Test2.1 to test if reducing polling interval can reduce lag.\
+\
+6/7\
+Added Test5 to try push & pull in Javascript among other things.

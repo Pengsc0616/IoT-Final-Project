@@ -1,0 +1,15 @@
+Test5:
+Try to achieve both input and output (push/pull data to/from IoTTalk) using Javascript. Code taken from Smartphone DA and reduced to only what is needed.
+
+Steps:
+1) Open index.html and watch the console. Simple. Doesn't even require opening IoTTalk (for this test). Fiddle with the code to test the limits.
+
+Results:
+> Sending (array of) strings WORKS
+> Sending (array of) numbers WORKS
+> Sending a mix of both WORKS
+> Sending data to a DF not in the DM WORKS (as long as you include it in the profile df_list)
+> Registering with a nonexistent DM name DOESN'T WORK (tried changing Smartphone to Smartporn...no luck)
+
+Extra:
+> Observing the "pull orientation" logs (outputs "s-XX-YY"), we can see that the time difference between a pull and its corresponding push is > 1 sec. Thought this would've been a chance to fix the lag, but apparently nope.
