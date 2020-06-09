@@ -1,0 +1,9 @@
+Battleship:
+First draft? Seems to be working.
+
+How to play:
+1) Open two tabs on the PC with index.html, link them in IoTTalk as in the screenshot
+2) DA with odd number goes first, go to that tab and click a square on the Enemy Gameboard, switch to the other tab to see the result on the Ally Gameboard (should take 5~10 secs)
+3) Optionally watch the console on both tabs for all the nonsensical output
+4) Make a move on the even-numbered DA and watch the result on the odd-numbered DA
+5) Voila!? Tell me if it bugs out again

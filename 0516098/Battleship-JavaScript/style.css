@@ -46,11 +46,11 @@ p {
 	height: 50px;
 }
 
-.gameboard div.sunk {
+.gameboard div.miss {
 	background-color: #bbb;
 }
 
-.gameboard div.miss {
+.gameboard div.sunk {
 	background-color: red;
 }
 
