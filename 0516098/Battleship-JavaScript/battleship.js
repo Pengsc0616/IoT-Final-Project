@@ -57,11 +57,8 @@ var state_name = {
 	4: 'hidden',
 };
 
-createGameBoard(allyGameBoardContainer, allyGameBoard);
-createGameBoard(enemyGameBoardContainer, enemyGameBoard);
-
-// set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
-enemyGameBoardContainer.addEventListener("click", fireTorpedo, false);
+createGameBoard(allyGameBoardContainer, allyGameBoard, 'a');
+createGameBoard(enemyGameBoardContainer, enemyGameBoard, 'e');
 
 
 //
@@ -73,7 +70,7 @@ var profile = {
 	'df_list': ['send', 'recv'],
 }
 
-var interval = 3000; // data transfer interval
+var interval = 500; // data transfer interval
 
 csmRegister(profile, (msg) => {
 	console.log(msg);
@@ -84,6 +81,7 @@ csmRegister(profile, (msg) => {
 		wait();
 	} else {
 		console.log("Odd DA, first hand");
+		enemyGameBoardContainer.addEventListener("click", fireTorpedo);
 	}
 });
 
