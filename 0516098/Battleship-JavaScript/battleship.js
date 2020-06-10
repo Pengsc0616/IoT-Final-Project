@@ -66,7 +66,7 @@ createGameBoard(enemyGameBoardContainer, enemyGameBoard, 'e');
 //
 
 var profile = {
-	'dm_name': 'Battleship',
+	'dm_name': 'Battleship_old',
 	'df_list': ['send', 'recv'],
 }
 
@@ -76,7 +76,6 @@ csmRegister(profile, (msg) => {
 	console.log(msg);
 	document.title = msg.d_name;
 	da_parity = parseInt(msg.d_name.substr(0, 2)) % 2;
-
 	if (da_parity == 0) { // odd da first, even wait
 		console.log("Even DA, second hand");
 		wait();
