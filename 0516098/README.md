@@ -10,4 +10,13 @@ Added Test4 connecting IoTTalk Smartphone cyberdevice to game.\
 Added Test2.1 to test if reducing polling interval can reduce lag.\
 \
 6/7\
-Added Test5 to try push & pull in Javascript among other things.
+Added Test5 to try push & pull in Javascript among other things.\
+\
+6/9\
+Submit multiplayer Battleship game v1.\
+Hopefully functional.\
+\
+6/10\
+Submit Battleship v2.\
+Fixed bug in Battleship where the game gets stuck due to a control message not reaching the other side.\
+Next: Change device model to have separate channels for Attack and Reveal messages. Might reduce DF "traffic jams".

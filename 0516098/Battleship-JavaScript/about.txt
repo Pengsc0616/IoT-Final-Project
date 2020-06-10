@@ -1,5 +1,5 @@
-Battleship:
-First draft? Seems to be working.
+Battleship v1.1:
+Sending Control:OK 3 times doesn't guarantee the other side will receive the message and may cause the game to get stuck. Changed it to use only Attack and Reveal messages.
 
 How to play:
 1) Open two tabs on the PC with index.html, link them in IoTTalk as in the screenshot

@@ -75,8 +75,9 @@ var interval = 500; // data transfer interval
 csmRegister(profile, (msg) => {
 	console.log(msg);
 	document.title = msg.d_name;
-	var da_id = msg.d_name.substr(0, 2);
-	if (da_id % 2 == 0) { // odd da first, even wait
+	da_parity = parseInt(msg.d_name.substr(0, 2)) % 2;
+
+	if (da_parity == 0) { // odd da first, even wait
 		console.log("Even DA, second hand");
 		wait();
 	} else {
@@ -99,3 +100,7 @@ csmRegister(profile, (msg) => {
       Patrol Boat - 2 hits
 */
 var hitCount = 0;
+
+//1=odd numbered DA's turn, 0=even numbered DA's turn
+var turn = 1;
+var da_parity;
