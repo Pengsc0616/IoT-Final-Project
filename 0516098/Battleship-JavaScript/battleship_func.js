@@ -28,100 +28,124 @@ function fireTorpedo() {
 		return;
 	}
 
+	ttt = Date.now(); // for debugging
+
 	square.className = 'fetching';
 	enemyGameBoardContainer.removeEventListener('click', fireTorpedo);
-	send_attack(square.id.substr(1));
+	send_attack(square.id[1], square.id[2], turn);
 }
 
-// data communication formats:
-// Attack:sXY
-// Reveal:Z	(Z=state of the square, empty or ship)
-function send_attack(square_coord) {
-	var row = square_coord.substr(1, 1);
-	var col = square_coord.substr(2, 1);
-	// send attack command
-	csmPush('send', ['Attack:' + square_coord]);
-	// check for reveal, resend attack if reveal not received
-	csmPull('recv', (data) => {
-		if (turn != da_parity) return;
-		if (data) {
-			if (data.indexOf('Reveal') == 0) {
-				turn = !da_parity;
-				var square_hit = {
-					coord: parseInt(data.substr('Reveal:', 2)),
-					state: parseInt(data.substr(-1)),
-				};
-				console.log('Hit! Coord:', square_hit.coord);
-				switch (square_hit.state) {
-					case states.sunk:
-					case states.miss:
-						enemyGameBoard[row][col] = square_hit.state;
-						var square = $('#e' + square_coord)[0];
-						square.className = state_name[square_hit.state];
-						hitCount++;
-						if (hitCount == 17) {
-							alert('All enemy battleships have been defeated! You win!');
-						}
-						wait();
-						break;
-					default:
-						console.log(`Invalid data: ${data}, expected state ${states.empty} or ${states.ship}`);
-				}
-				wait();
+// fturn = frozen turn, stop looping if fturn too old
+function send_attack(row, col, fturn = turn) {
+	csmPush('sendAttack', {
+		row: row,
+		col: col,
+	});
+	if (Date.now() - ttt > interval * 10) {
+		debugger;
+		ttt = Date.now();
+	} // debug if game stuck
 
-			} else {
-				console.log(`Invalid data: ${data}, expected Reveal.`);
-				setTimeout(send_attack.bind(null, square_coord), interval);
+	csmPull('recvReveal', (data) => {
+		if (data) {
+			if (data.row != row || data.col != col) {
+				console.log(`Revealed wrong coordinates: ${data.row}${data.col}\nExpected: ${row}${col}`);
+				if (turn > fturn + 2) return;
+				setTimeout(send_attack.bind(null, row, col, fturn), interval);
+				return;
+			} else if (turn > fturn + 2) return;
+			++turn;
+			var square_hit = data;
+			console.log('Hit! Coordinates:', square_hit.row, square_hit.col);
+			switch (square_hit.state) {
+				case states.sunk:
+				case states.miss:
+					enemyGameBoard[row][col] = square_hit.state;
+					var square = $('#e' + square_hit.row + square_hit.col)[0];
+					square.className = state_name[square_hit.state];
+					hitCount++;
+					if (hitCount == 17) {
+						alert('All enemy battleships have been defeated! You win!');
+					}
+					$('#turn-indicator')[0].innerText = "Enemy's turn";
+					$('#turn-indicator')[0].style.color = 'red';
+					$('#ally-gameboard-text')[0].scrollIntoView({
+						behavior: 'smooth'
+					});
+
+					wait(fturn);
+					break;
+				default:
+					console.log(`Invalid data: ${data}, expected state ${states.empty} or ${states.ship}`);
 			}
 		} else {
-			setTimeout(send_attack.bind(null, square_coord), interval);
+			if (turn > fturn + 2) return;
+			setTimeout(send_attack.bind(null, row, col, fturn), interval);
 		}
 	});
 }
 
-function wait() {
-	console.log('Wait')
-	// wait for enemy attack
-	csmPull('recv', (data) => {
-		if (turn == da_parity) return;
+function wait(fturn = turn) {
+	ttt = Date.now(); // for debugging
+
+	csmPull('recvAttack', (data) => {
 		if (data) {
-			if (data.indexOf('Attack') == 0) {
-				turn = da_parity;
-				// grab square id and change it to ally board square id
-				var square_coord = data.substr('Attack:'.length);
-				console.log(data.substr('Attack:'.length), "was hit");
-				console.log('Your turn!');
-				var row = square_coord.substr(0, 1);
-				var col = square_coord.substr(1, 1);
-				switch (allyGameBoard[row][col]) {
-					case states.empty:
-						allyGameBoard[row][col] = states.miss;
-						$('#a' + square_coord)[0].className = 'miss';
-						enemyGameBoardContainer.addEventListener('click', fireTorpedo);
-						break;
-					case states.ship:
-						allyGameBoard[row][col] = states.sunk;
-						$('#a' + square_coord)[0].className = 'sunk';
-						enemyGameBoardContainer.addEventListener('click', fireTorpedo);
-						break;
-					default: // do not reach here
-						console.log(`Invalid state: ${allyGameBoard[row][col]}, expected ${states.empty} or ${states.ship}.`);
-				}
-				csmPush('send', 'Reveal:' + square_coord + ':' + allyGameBoard[row][col]);
-				csmPull('recv', function resendReveal(data) {
-					if (turn == da_parity) {
-						setTimeout(function () {
-							csmPush('send', 'Reveal:' + square_coord + ':' + allyGameBoard[row][col]);
-							csmPull('recv', resendReveal);
-						}, interval);
-					}
-				});
-			} else {
-				console.log(`Invalid data: ${data}, expected Attack.`);
+			var sqst = allyGameBoard[data.row][data.col]; // square state
+			if (sqst == states.sunk || sqst == states.miss) {
+				console.log(`Received wrong attack coordinates: ${data.row}${data.col}\nState: ${sqst}`);
+				if (turn > fturn + 2) return;
 				setTimeout(wait, interval);
+				return;
+			} else if (turn > fturn + 2) return;
+			++turn;
+			console.log('a' + data.row + data.col + ' was hit');
+			console.log('Your turn!');
+			$('#turn-indicator')[0].innerText = 'Your turn';
+			$('#turn-indicator')[0].style.color = 'green';
+			$('#enemy-gameboard-text')[0].scrollIntoView({
+				behavior: 'smooth'
+			});
+
+			var row = data.row;
+			var col = data.col;
+			switch (allyGameBoard[row][col]) {
+				case states.empty:
+					allyGameBoard[row][col] = states.miss;
+					$('#a' + row + col)[0].className = 'miss';
+					enemyGameBoardContainer.addEventListener('click', fireTorpedo);
+					break;
+				case states.ship:
+					allyGameBoard[row][col] = states.sunk;
+					$('#a' + row + col)[0].className = 'sunk';
+					enemyGameBoardContainer.addEventListener('click', fireTorpedo);
+					break;
+				default:
+					console.log(`Invalid state: allyGameBoard[${row}][${col}]=${allyGameBoard[row][col]}, expected ${states.empty} or ${states.ship}.`);
 			}
+
+			var objReveal = {
+				row: row,
+				col: col,
+				state: allyGameBoard[row][col],
+			};
+
+			(function resendReveal() {
+				if (Date.now() - ttt > interval * 10) {
+					debugger;
+					ttt = Date.now();
+				} // debug if game stuck
+				if (turn > fturn + 2) return;
+				csmPush('sendReveal', objReveal);
+				setTimeout(resendReveal, interval);
+			})();
+
 		} else {
+			if (turn > fturn + 2) return;
 			setTimeout(wait, interval);
 		}
 	});
 }
+
+//function isEmpty(obj) {
+//	return Object.keys(obj).length == 0;
+//}

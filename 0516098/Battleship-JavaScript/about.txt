@@ -1,9 +1,9 @@
-Battleship v1.1:
-Sending Control:OK 3 times doesn't guarantee the other side will receive the message and may cause the game to get stuck. Changed it to use only Attack and Reveal messages.
+Battleship v1.2:
+Somehow managed to FINALLY get it working (this time for sure? plz? testing required). Changed the DM while bug-fixing. Next gotta do some beautification (colors, animations, etc), should be much easier.
 
 How to play:
 1) Open two tabs on the PC with index.html, link them in IoTTalk as in the screenshot
-2) DA with odd number goes first, go to that tab and click a square on the Enemy Gameboard, switch to the other tab to see the result on the Ally Gameboard (should take 5~10 secs)
-3) Optionally watch the console on both tabs for all the nonsensical output
+2) DA with odd number goes first, go to that tab and click a square on the Enemy Gameboard, switch to the other tab to see the result on the Ally Gameboard (should take < 5 secs)
+3) Optionally watch the console on both tabs for all the nonsensical output (debugger will trigger in case the game gets stuck so you can watch console output)
 4) Make a move on the even-numbered DA and watch the result on the odd-numbered DA
 5) Voila!? Tell me if it bugs out again

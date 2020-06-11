@@ -13,10 +13,16 @@ Added Test2.1 to test if reducing polling interval can reduce lag.\
 Added Test5 to try push & pull in Javascript among other things.\
 \
 6/9\
-Submit multiplayer Battleship game v1.\
+Submit multiplayer Battleship game v1\
 Hopefully functional.\
 \
 6/10\
-Submit Battleship v2.\
+Submit Battleship v1.1\
 Fixed bug in Battleship where the game gets stuck due to a control message not reaching the other side.\
-Next: Change device model to have separate channels for Attack and Reveal messages. Might reduce DF "traffic jams".
+Next up: Change device model to have separate channels for Attack and Reveal messages. Might reduce DF "traffic jams".\
+\
+6/11\
+Submit Battleship v1.2\
+Fixed bug where game gets stuck if players act too fast. Should be mostly operational now (hopefully).\
+Next up: Beautify the game, deal with the game over part, and whatever else comes to mind later.\
+P.S. Moved over to 4.iottalk.tw cuz 5.iottalk.tw kept giving me 500 Internal Server Error.\

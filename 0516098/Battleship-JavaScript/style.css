@@ -14,6 +14,8 @@ h2 {
 	font-size: 2em;
 	font-family: 'Helvetica', 'Arial', 'Sans-Serif';
 	text-align: center;
+	margin-top: 0px;
+	padding-top: 1em;
 }
 
 p {
@@ -60,4 +62,18 @@ p {
 
 .gameboard div.fetching {
 	background-color: aquamarine;
+}
+
+#turn-indicator {
+	position: fixed;
+	top: 1em;
+	left: 1em;
+}
+
+#ally-gameboard-text {
+	color: blue;
+}
+
+#enemy-gameboard-text {
+	color: red;
 }
