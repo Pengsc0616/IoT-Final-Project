@@ -11,9 +11,8 @@ h1 {
 	text-align: center;
 }
 
-h2,
-#turn-indicator {
-	font-size: 2em;
+h2 {
+	font-size: 7vmin;
 	font-family: 'Helvetica', 'Arial', 'Sans-Serif';
 	text-align: center;
 }
@@ -31,6 +30,7 @@ p {
 	margin: 0 auto 2em auto;
 	width: 500px;
 	height: 500px;
+	border: 1px solid #ddd;
 }
 
 .gameboard div {
@@ -44,12 +44,13 @@ p {
 	background-color: #f6f8f9;
 	/* Old browsers */
 	border: 1px solid #ddd;
-	width: 50px;
-	height: 50px;
+	/* increase border if gaps appear between squares */
+	/*	width: 50px; defined in javascript createGameBoard function*/
+	/*	height: 50px; defined in javascript createGameBoard function*/
 }
 
 .empty-space {
-	height: 10em;
+	/*	height: 10em;*/
 }
 
 .gameboard div.miss {
@@ -78,4 +79,11 @@ p {
 
 #enemy-gameboard-text {
 	color: red;
+}
+
+.gameboard div {
+	-webkit-transition: all 0.75s linear;
+	-moz-transition: all 0.75s linear;
+	-o-transition: all 0.75s linear;
+	transition: all 0.75s linear;
 }

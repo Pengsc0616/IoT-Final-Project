@@ -1,9 +1,12 @@
 function createGameBoard(gameBoardContainer, gameBoard, prefix) {
 	if (prefix.length != 1) {
-		console.log('Game board must be exactly one char long');
+		console.log('Game board prefix must be exactly one char long');
 		return;
 	}
 
+	gameBoardContainer.style.width = cols * squareSize + 'vmin';
+	gameBoardContainer.style.height = rows * squareSize + 'vmin';
+	$('.empty-space').css('height', rows * squareSize / 2.718 + 'vmin'); // don't really need e, anything above 2.5 should be safe
 	for (i = 0; i < rows; i++) {
 		for (j = 0; j < cols; j++) {
 			var square = document.createElement('div');
@@ -11,8 +14,10 @@ function createGameBoard(gameBoardContainer, gameBoard, prefix) {
 			square.id = prefix + i + j;
 
 			square.classList.add(state_name[gameBoard[i][j]]);
-			square.style.top = i * squareSize + 'px';
-			square.style.left = j * squareSize + 'px';
+			square.style.top = i * squareSize + 'vmin';
+			square.style.left = j * squareSize + 'vmin';
+			square.style.height = squareSize + 'vmin';
+			square.style.width = squareSize + 'vmin';
 			gameBoardContainer.appendChild(square);
 		}
 	}
@@ -61,36 +66,26 @@ function send_attack(row, col, fturn = turn) {
 
 			++turn;
 			var square_hit = data;
-			console.log('Hit ', JSON.stringify(square_hit));
+			console.log('Enemy revealed ', JSON.stringify(square_hit));
 			switch (square_hit.state) {
 				case states.sunk:
-					enemyGameBoard[row][col] = square_hit.state;
-					var square = $('#e' + square_hit.row + square_hit.col)[0];
-					square.className = state_name[square_hit.state];
-
-					allyHitCount++;
-					if (allyHitCount >= totalShipCount) {
-						alert('All enemy battleships have been defeated! You win!');
-						game_over(true);
-						return;
-					}
-
-					$('#turn-indicator')[0].innerText = "Enemy's turn";
-					$('#turn-indicator')[0].style.color = 'red';
-
-					scroll_to('ally');
-
-					wait();
-					break;
+					++allyHitCount;
 				case states.miss:
 					enemyGameBoard[row][col] = square_hit.state;
 					var square = $('#e' + square_hit.row + square_hit.col)[0];
 					square.className = state_name[square_hit.state];
 
-					$('#turn-indicator')[0].innerText = "Enemy's turn";
-					$('#turn-indicator')[0].style.color = 'red';
-					scroll_to('ally');
+					if (allyHitCount >= totalShipCount) {
+						game_over(true);
+						return;
+					}
 
+					setTimeout(() => {
+						$('#turn-indicator')[0].innerText = "Enemy's turn";
+						$('#turn-indicator')[0].style.color = 'red';
+					}, 750);
+					// wait for transition animation, then go to enemy gameboard
+					setTimeout(() => scroll_to('ally'), 1000);
 					wait();
 					break;
 				default:
@@ -120,10 +115,10 @@ function wait(fturn = turn) {
 			++turn;
 			console.log('a' + data.row + data.col + ' was hit');
 			console.log('Your turn!');
-			$('#turn-indicator')[0].innerText = 'Your turn';
-			$('#turn-indicator')[0].style.color = 'green';
-			scroll_to('enemy');
-
+			setTimeout(() => {
+				$('#turn-indicator')[0].innerText = 'Your turn';
+				$('#turn-indicator')[0].style.color = 'blue';
+			}, 750);
 			var row = data.row;
 			var col = data.col;
 			switch (allyGameBoard[row][col]) {
@@ -136,14 +131,25 @@ function wait(fturn = turn) {
 					allyGameBoard[row][col] = states.sunk;
 					$('#a' + row + col)[0].className = 'sunk';
 					enemyGameBoardContainer.addEventListener('click', fireTorpedo);
+
 					enemyHitCount++;
 					if (enemyHitCount >= totalShipCount) {
-						alert('All ally battleships have been defeated! You lose.');
+						// let enemy know the game is over before alerting
+						csmPush('sendReveal', {
+							row: row,
+							col: col,
+							state: allyGameBoard[row][col],
+						});
 						game_over(false);
 					}
+
 					break;
 				default:
 					console.log(`Invalid state: allyGameBoard[${row}][${col}]=${allyGameBoard[row][col]}, expected ${states.empty} or ${states.ship}.`);
+			}
+			// wait for transition animation, then go to enemy gameboard
+			if (!isGameOver()) {
+				setTimeout(() => scroll_to('enemy'), 1000);
 			}
 
 			// resend until enemy receives it
@@ -177,23 +183,41 @@ function scroll_to(side) {
 	$('html,body').animate({
 		scrollTop: offset,
 	}, {
-		duration: 1000,
+		duration: 750,
 	})
 }
 
 // will continue spamming server with AJAX requests, so close the game when it ends!
-function game_over(result) {
+function game_over(result, revealObj) {
 	$('#enemy-gameboard')[0].removeEventListener('click', fireTorpedo);
 	var indicator = $('#turn-indicator')[0];
-	indicator.style.color = 'black';
+	var display_msg, alert_msg;
 
 	if (result == true) {
-		indicator.innerText = 'Game Over. You Win!';
+		display_msg = 'Game Over. You Win!';
+		alert_msg = 'All enemy battleships have been defeated! You win!';
 	} else {
-		indicator.innerText = 'Game Over. You Lose.';
+		scroll_to('ally');
+		display_msg = 'Game Over. You Lose.';
+		alert_msg = 'All ally battleships have been defeated! You lose.';
 	}
+
+	setTimeout(() => {
+		indicator.style.color = 'black';
+		indicator.innerText = display_msg;
+		setTimeout(() => alert(alert_msg), 50);
+	}, 750);
 }
 
 //function isEmpty(obj) {
 //	return Object.keys(obj).length == 0;
 //}
+
+function isGameOver() {
+	return (allyHitCount >= totalShipCount) || (enemyHitCount >= totalShipCount);
+}
+
+// is the player using a smartphone?
+function isSmartphone() {
+	return $(window).height() > $(window).width();
+}
