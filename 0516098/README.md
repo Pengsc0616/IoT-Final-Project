@@ -26,3 +26,9 @@ Submit Battleship v1.2\
 Fixed bug where game gets stuck if players act too fast. Should be mostly operational now (hopefully).\
 Next up: Beautify the game, deal with the game over part, and whatever else comes to mind later.\
 P.S. Moved over to 4.iottalk.tw cuz 5.iottalk.tw kept giving me 500 Internal Server Error.\
+\
+6/13\
+Added colors, animations, text positioning, game over conditions, ...\
+Next (optional): Organize the code, allow modifying parameters, game intro (start button), fix UI for mobile website...\
+P.S. 5.iottalk.tw is still broken\
+\

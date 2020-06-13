@@ -1,5 +1,5 @@
-Battleship v1.2:
-Somehow managed to FINALLY get it working (this time for sure? plz? testing required). Changed the DM while bug-fixing. Next gotta do some beautification (colors, animations, etc), should be much easier.
+Battleship v1.3:
+2-player Battleship game
 
 How to play:
 1) Open two tabs on the PC with index.html, link them in IoTTalk as in the screenshot
