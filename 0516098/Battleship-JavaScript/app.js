@@ -1,6 +1,6 @@
 /*==JS VERSION 1==*/
 var id = 'sp-';
-var endPoint = 'https://5.iottalk.tw/';
+var endPoint = 'https://4.iottalk.tw/';
 var timestamp = {};
 var msg = {};
 var passwd = undefined;
@@ -24,7 +24,7 @@ const csmRegister = function (pf, callback) {
 		//dataType: 'json',
 		contentType: 'application/json',
 		success: function (msg) {
-			//document.title = pf.d_name;
+			document.title = pf.d_name;
 			window.onunload = csmDelete;
 			window.onbeforeunload = csmDelete;
 			window.onclose = csmDelete;
@@ -58,7 +58,7 @@ const csmPull = function (df, handler) {
 				value = data.samples[0][1];
 			}
 		}
-		//		console.log("Pull: " + value);
+		console.log(`Pull: ${df} ${JSON.stringify(value)}`);
 		handler(value);
 	}
 	$.ajax({
@@ -79,7 +79,7 @@ const csmPush = function (df, rawData) {
 	jsonData = {
 		'data': rawData
 	};
-	console.log('Push:', JSON.stringify(jsonData));
+	console.log(`Push: ${df} ${JSON.stringify(jsonData)}`);
 
 	$.ajax({
 		url: endPoint + id + '/' + df,

@@ -23,110 +23,177 @@ function fireTorpedo() {
 	var row = square.id.substring(1, 2);
 	var col = square.id.substring(2, 3);
 
-	if (enemyGameBoard[row][col] != 4) {
+	var state = enemyGameBoard[row][col];
+	if (state == states.miss || state == states.sunk) {
 		alert('Stop wasting your torpedos! You already fired at this location.');
 		return;
 	}
 
+	ttt = Date.now(); // for debugging
+
 	square.className = 'fetching';
 	enemyGameBoardContainer.removeEventListener('click', fireTorpedo);
-	send_attack(square.id);
+	send_attack(square.id[1], square.id[2]);
 }
 
-// data communication formats:
-// Attack:sXY
-// Reveal:Z	(Z=state of the square, empty or ship)
-// Control:OK
-function send_attack(square_id) {
-	var row = square_id.substr(1, 1);
-	var col = square_id.substr(2, 1);
-	// send attack command
-	csmPush('send', ['Attack:' + square_id]);
-	// check for reveal, resend attack if reveal not received
-	csmPull('recv', (data) => {
-		console.log('recv', data) ///////
+// fturn = frozen turn, stop looping if fturn too old
+function send_attack(row, col, fturn = turn) {
+	csmPush('sendAttack', {
+		row: row,
+		col: col,
+	});
+
+	if (Date.now() - ttt > interval * 10) {
+		console.log('sendAttack triggered debugger');
+		debugger;
+		ttt = Date.now();
+	} // debug if game stuck
+
+	csmPull('recvReveal', (data) => {
 		if (data) {
-			if (data.indexOf('Reveal') == 0) {
-				//				var new_square_id = 'a' + square_id.substr(1);
-				square_state = parseInt(data.substr('Reveal'.length + 1));
-				switch (square_state) {
-					case states.sunk:
-					case states.miss:
-						enemyGameBoard[row][col] = square_state;
-						var square = $('#' + square_id)[0];
-						console.log(state_name[square_state]) ////////////////
-						square.className = state_name[square_state];
-						hitCount++;
-						if (hitCount == 17) {
-							alert('All enemy battleships have been defeated! You win!');
-						}
-						setTimeout(() => csmPush('send', 'Control:OK'), interval);
-						setTimeout(() => csmPush('send', 'Control:OK'), interval * 2);
-						setTimeout(() => csmPush('send', 'Control:OK'), interval * 3);
-						wait();
-						break;
-					default:
-						console.log(`Invalid data: ${data}, expected state ${states.empty} or ${states.ship}`);
-				}
-				wait();
-			} else {
-				console.log(`Invalid data: ${data}, expected Reveal.`);
-				setTimeout(send_attack.bind(null, square_id), interval);
+			// handle outdated data
+			if (data.row != row || data.col != col) {
+				console.log(`Revealed wrong coordinates: ${data.row}${data.col}\nExpected: ${row}${col}`);
+				if (turn > fturn + 2) return;
+				setTimeout(send_attack.bind(null, row, col, fturn), interval);
+				return;
+			} else if (turn > fturn + 2) return;
+
+			++turn;
+			var square_hit = data;
+			console.log('Hit ', JSON.stringify(square_hit));
+			switch (square_hit.state) {
+				case states.sunk:
+					enemyGameBoard[row][col] = square_hit.state;
+					var square = $('#e' + square_hit.row + square_hit.col)[0];
+					square.className = state_name[square_hit.state];
+
+					allyHitCount++;
+					if (allyHitCount >= totalShipCount) {
+						alert('All enemy battleships have been defeated! You win!');
+						game_over(true);
+						return;
+					}
+
+					$('#turn-indicator')[0].innerText = "Enemy's turn";
+					$('#turn-indicator')[0].style.color = 'red';
+
+					scroll_to('ally');
+
+					wait();
+					break;
+				case states.miss:
+					enemyGameBoard[row][col] = square_hit.state;
+					var square = $('#e' + square_hit.row + square_hit.col)[0];
+					square.className = state_name[square_hit.state];
+
+					$('#turn-indicator')[0].innerText = "Enemy's turn";
+					$('#turn-indicator')[0].style.color = 'red';
+					scroll_to('ally');
+
+					wait();
+					break;
+				default:
+					console.log(`Invalid data: ${data}, expected state ${states.empty} or ${states.ship}`);
 			}
 		} else {
-			setTimeout(send_attack.bind(null, square_id), interval);
+			if (turn > fturn + 2) return;
+			setTimeout(send_attack.bind(null, row, col, fturn), interval);
 		}
 	});
 }
 
-function wait() {
-	console.log('Wait')
-	// wait for enemy attack
-	csmPull('recv', (data) => {
+function wait(fturn = turn) {
+	ttt = Date.now(); // for debugging
+
+	csmPull('recvAttack', (data) => {
 		if (data) {
-			if (data.indexOf('Attack') == 0) {
-				// grab square id and change it to ally board square id
-				var square_id = data.substr('Attack'.length + 1);
-				var new_square_id = 'a' + square_id.substr(1);
-				console.log(data, "was hit");
-				console.log('Your turn!');
-				var row = square_id.substr(1, 1);
-				var col = square_id.substr(2, 1);
-				switch (allyGameBoard[row][col]) {
-					case states.empty:
-						allyGameBoard[row][col] = states.miss;
-						$('#' + new_square_id)[0].className = 'miss';
-						enemyGameBoardContainer.addEventListener('click', fireTorpedo);
-						break;
-					case states.ship:
-						allyGameBoard[row][col] = states.sunk;
-						$('#' + new_square_id)[0].className = 'sunk';
-						enemyGameBoardContainer.addEventListener('click', fireTorpedo);
-						break;
-					default: // do not reach here
-						console.log(`Invalid state: ${allyGameBoard[row][col]}, expected ${states.empty} or ${states.ship}.`);
-				}
-				csmPush('send', 'Reveal:' + allyGameBoard[row][col]);
-				csmPull('recv', function resendReveal(data) {
-					if (data) {
-						if (data.indexOf('Control:OK') == 0) {
-							console.log('OK received, stop sending reveal');
-						} else {
-							console.log(`Invalid data: ${data}, expected Control:OK.`);
-							csmPush('send', 'Reveal:' + allyGameBoard[row][col]);
-							setTimeout(() => csmPull('recv', resendReveal), interval);
-						}
-					} else {
-						csmPush('send', 'Reveal:' + allyGameBoard[row][col]);
-						setTimeout(() => csmPull('recv', resendReveal), interval);
-					}
-				});
-			} else {
-				console.log(`Invalid data: ${data}, expected Attack.`);
+			// handle outdated data
+			var state = allyGameBoard[data.row][data.col];
+			if (state == states.sunk || state == states.miss) {
+				console.log(`Received wrong attack coordinates: ${data.row}${data.col}\nState: ${state}`);
+				if (turn > fturn + 2) return;
 				setTimeout(wait, interval);
+				return;
+			} else if (turn > fturn + 2) return;
+
+			++turn;
+			console.log('a' + data.row + data.col + ' was hit');
+			console.log('Your turn!');
+			$('#turn-indicator')[0].innerText = 'Your turn';
+			$('#turn-indicator')[0].style.color = 'green';
+			scroll_to('enemy');
+
+			var row = data.row;
+			var col = data.col;
+			switch (allyGameBoard[row][col]) {
+				case states.empty:
+					allyGameBoard[row][col] = states.miss;
+					$('#a' + row + col)[0].className = 'miss';
+					enemyGameBoardContainer.addEventListener('click', fireTorpedo);
+					break;
+				case states.ship:
+					allyGameBoard[row][col] = states.sunk;
+					$('#a' + row + col)[0].className = 'sunk';
+					enemyGameBoardContainer.addEventListener('click', fireTorpedo);
+					enemyHitCount++;
+					if (enemyHitCount >= totalShipCount) {
+						alert('All ally battleships have been defeated! You lose.');
+						game_over(false);
+					}
+					break;
+				default:
+					console.log(`Invalid state: allyGameBoard[${row}][${col}]=${allyGameBoard[row][col]}, expected ${states.empty} or ${states.ship}.`);
 			}
+
+			// resend until enemy receives it
+			(function resendReveal() {
+				if (Date.now() - ttt > interval * 10) {
+					console.log('resendReveal triggered debugger');
+					debugger;
+					ttt = Date.now();
+				} // debug if game stuck
+				if (turn > fturn + 2) return;
+				csmPush('sendReveal', {
+					row: row,
+					col: col,
+					state: allyGameBoard[row][col],
+				});
+				setTimeout(resendReveal, interval);
+			})();
+
 		} else {
+			if (turn > fturn + 2) return;
 			setTimeout(wait, interval);
 		}
 	});
 }
+
+// scroll to gameboard
+// side = {'ally','enemy'}
+function scroll_to(side) {
+	var board = $(`#${side}-gameboard`);
+	var offset = board.offset().top - ($(window).height() / 2 - board.height() / 2);
+	$('html,body').animate({
+		scrollTop: offset,
+	}, {
+		duration: 1000,
+	})
+}
+
+// will continue spamming server with AJAX requests, so close the game when it ends!
+function game_over(result) {
+	$('#enemy-gameboard')[0].removeEventListener('click', fireTorpedo);
+	var indicator = $('#turn-indicator')[0];
+	indicator.style.color = 'black';
+
+	if (result == true) {
+		indicator.innerText = 'Game Over. You Win!';
+	} else {
+		indicator.innerText = 'Game Over. You Lose.';
+	}
+}
+
+//function isEmpty(obj) {
+//	return Object.keys(obj).length == 0;
+//}

@@ -1,0 +1,2 @@
+Result:
+Once data is pushed to an ODF, it is stored in a buffer until it is pulled out, regardless of how much time has passed after pushing. Probably the same with IDF.

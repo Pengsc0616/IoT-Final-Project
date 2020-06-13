@@ -2,6 +2,7 @@ body {
 	margin: 60px auto;
 	width: 80%;
 	max-width: 950px;
+	text-align: center;
 }
 
 h1 {
@@ -10,7 +11,8 @@ h1 {
 	text-align: center;
 }
 
-h2 {
+h2,
+#turn-indicator {
 	font-size: 2em;
 	font-family: 'Helvetica', 'Arial', 'Sans-Serif';
 	text-align: center;
@@ -46,6 +48,10 @@ p {
 	height: 50px;
 }
 
+.empty-space {
+	height: 10em;
+}
+
 .gameboard div.miss {
 	background-color: #bbb;
 }
@@ -60,4 +66,16 @@ p {
 
 .gameboard div.fetching {
 	background-color: aquamarine;
+}
+
+#turn-indicator {
+	position: fixed;
+}
+
+#ally-gameboard-text {
+	color: blue;
+}
+
+#enemy-gameboard-text {
+	color: red;
 }
