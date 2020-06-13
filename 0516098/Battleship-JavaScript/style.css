@@ -45,12 +45,10 @@ p {
 	/* Old browsers */
 	border: 1px solid #ddd;
 	/* increase border if gaps appear between squares */
-	/*	width: 50px; defined in javascript createGameBoard function*/
-	/*	height: 50px; defined in javascript createGameBoard function*/
-}
-
-.empty-space {
-	/*	height: 10em;*/
+	-webkit-transition: all 0.75s linear;
+	-moz-transition: all 0.75s linear;
+	-o-transition: all 0.75s linear;
+	transition: all 0.75s linear;
 }
 
 .gameboard div.miss {
@@ -79,11 +77,4 @@ p {
 
 #enemy-gameboard-text {
 	color: red;
-}
-
-.gameboard div {
-	-webkit-transition: all 0.75s linear;
-	-moz-transition: all 0.75s linear;
-	-o-transition: all 0.75s linear;
-	transition: all 0.75s linear;
 }

@@ -6,7 +6,7 @@ function createGameBoard(gameBoardContainer, gameBoard, prefix) {
 
 	gameBoardContainer.style.width = cols * squareSize + 'vmin';
 	gameBoardContainer.style.height = rows * squareSize + 'vmin';
-	$('.empty-space').css('height', rows * squareSize / 2.718 + 'vmin'); // don't really need e, anything above 2.5 should be safe
+	$('.empty-space').css('height', rows * squareSize / 2 + 'vmin');
 	for (i = 0; i < rows; i++) {
 		for (j = 0; j < cols; j++) {
 			var square = document.createElement('div');
@@ -82,10 +82,10 @@ function send_attack(row, col, fturn = turn) {
 
 					setTimeout(() => {
 						$('#turn-indicator')[0].innerText = "Enemy's turn";
-						$('#turn-indicator')[0].style.color = 'red';
-					}, 750);
+						$('#turn-indicator')[0].style.color = $('#enemy-gameboard-text').css('color');
+					}, animationTime);
 					// wait for transition animation, then go to enemy gameboard
-					setTimeout(() => scroll_to('ally'), 1000);
+					setTimeout(() => scroll_to('ally'), animationTime);
 					wait();
 					break;
 				default:
@@ -117,8 +117,8 @@ function wait(fturn = turn) {
 			console.log('Your turn!');
 			setTimeout(() => {
 				$('#turn-indicator')[0].innerText = 'Your turn';
-				$('#turn-indicator')[0].style.color = 'blue';
-			}, 750);
+				$('#turn-indicator')[0].style.color = $('#ally-gameboard-text').css('color');
+			}, animationTime);
 			var row = data.row;
 			var col = data.col;
 			switch (allyGameBoard[row][col]) {
@@ -183,7 +183,7 @@ function scroll_to(side) {
 	$('html,body').animate({
 		scrollTop: offset,
 	}, {
-		duration: 750,
+		duration: animationTime,
 	})
 }
 
@@ -206,7 +206,7 @@ function game_over(result, revealObj) {
 		indicator.style.color = 'black';
 		indicator.innerText = display_msg;
 		setTimeout(() => alert(alert_msg), 50);
-	}, 750);
+	}, animationTime);
 }
 
 //function isEmpty(obj) {
@@ -220,4 +220,63 @@ function isGameOver() {
 // is the player using a smartphone?
 function isSmartphone() {
 	return $(window).height() > $(window).width();
+}
+
+// this function is called before states is defined, so use 0 and 1 instead
+function generateGameboard(ships) {
+	var gameboard = Array(rows).fill().map(_ => Array(cols).fill(0));
+	ships.sort((a, b) => b - a); // sort in descending order to make sorting easier
+
+	for (let len of ships) {
+		let start, dir, end, safe = false,
+			attempts = 0,
+			threshold = 100;
+		while (!safe) {
+			end = [-1, -1];
+			// find a tentative ship placement within the gameboard
+			while (!(end[0] >= 0 && end[0] < rows && end[1] >= 0 && end[1] < cols)) {
+				// where the ship starts
+				start = [
+					Math.floor(Math.random() * rows), // integers in [0,rows]
+			 		Math.floor(Math.random() * cols), // integers in [0,cols]
+				];
+				// direction of ship growth, in matrix coordinates
+				dir = ([[1, 0], [0, 1], [-1, 0], [0, -1]])[Math.floor(Math.random() * 4)];
+				// where the ship ends
+				end[0] = start[0] + (len - 1) * dir[0];
+				end[1] = start[1] + (len - 1) * dir[1];
+			}
+			// check if all squares between start and end points are empty
+			safe = true;
+			for (let i = 0; i < len; ++i) {
+				let row = start[0] + i * dir[0];
+				let col = start[1] + i * dir[1];
+				if (gameboard[row][col] != 0) {
+					safe = false;
+					++attempts;
+					// if there is no way to generate a valid gameboard in the current situation, start anew
+					if (attempts > threshold) {
+						console.log('fail, renew gameboard')
+						return generateGameboard();
+					}
+					break;
+				}
+			}
+			//			if (!safe) {
+			//				console.log('fail');
+			//				console.log(gameboard);
+			//				console.log(start, end);
+			//			}
+		}
+		// once all involved squares are clear, add this ship to gameboard
+		for (let i = 0; i < len; ++i) {
+			let row = start[0] + i * dir[0];
+			let col = start[1] + i * dir[1];
+			gameboard[row][col] = 1;
+		}
+		//		console.log('success')
+		//		console.log(gameboard)
+	}
+
+	return gameboard;
 }
