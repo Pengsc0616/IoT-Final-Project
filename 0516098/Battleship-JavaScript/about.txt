@@ -1,4 +1,4 @@
-Battleship v1.3:
+Battleship:
 2-player Battleship game
 
 How to play:
