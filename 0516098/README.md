@@ -33,6 +33,6 @@ Next (optional): Organize the code, allow modifying parameters, game intro (star
 P.S. 5.iottalk.tw is still broken\
 \
 6/14\
-Support parameters, fix smartphone UI, randomized gameboard, ...\
+Support parameters, fix smartphone UI, randomized gameboard, stop ajax after gameover ...\
 Next: any ideas?\
 \

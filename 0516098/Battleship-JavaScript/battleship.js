@@ -2,9 +2,10 @@
 var rows = 10;
 var cols = 10;
 var squareSize = 8; // size of each square, unit= vmin
-var ships = [4, 2, 0]; // length of each ship
-var interval = 1500; // delay between each identical ajax request, unit: ms
-var animationTime = 750; // duration of each animation, unit: ms
+var ships = [0, 2, 0]; // length of each ship
+var interval = 1500; // delay between each identical ajax request; unit: ms
+var animationTime = 750; // duration of each animation; unit: ms
+var dieTime = 20000; // after game over, stop sending ajax requests after this much time has elapsed; unit: ms
 //var allyGameBoard = [
 //				[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
 //				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -28,6 +29,7 @@ var allyHitCount = 0; // how many successful shots have I landed?
 var enemyHitCount = 0; // how many successful shots has the enemy landed?
 var turn = 1; // total number of turns elapsed, odd=odd DA's turn, even=even DA's turn
 var ttt = Date.now(); // for debugging
+var dieTimer; // start timing when game ends to stop ajax requests
 
 const states = Object.freeze({
 	empty: 0, // ally board

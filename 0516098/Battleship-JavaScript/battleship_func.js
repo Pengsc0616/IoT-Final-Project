@@ -23,6 +23,8 @@ function createGameBoard(gameBoardContainer, gameBoard, prefix) {
 	}
 }
 
+// event handler: do stuff then transfer control to the two main functions
+// Event('click') -> fireTorpedo() -> send_attack(row,col) -> wait() -> Event('click') -> ...
 function fireTorpedo() {
 	var square = event.target;
 	var row = square.id.substring(1, 2);
@@ -41,6 +43,7 @@ function fireTorpedo() {
 	send_attack(square.id[1], square.id[2]);
 }
 
+// when it's your turn, send attack to enemy and wait for him to reveal the square, then wait() for enemy to make his move
 // fturn = frozen turn, stop looping if fturn too old
 function send_attack(row, col, fturn = turn) {
 	csmPush('sendAttack', {
@@ -59,10 +62,10 @@ function send_attack(row, col, fturn = turn) {
 			// handle outdated data
 			if (data.row != row || data.col != col) {
 				console.log(`Revealed wrong coordinates: ${data.row}${data.col}\nExpected: ${row}${col}`);
-				if (turn > fturn + 2) return;
+				if (stop_resend(fturn)) return;
 				setTimeout(send_attack.bind(null, row, col, fturn), interval);
 				return;
-			} else if (turn > fturn + 2) return;
+			} else if (stop_resend(fturn)) return;
 
 			++turn;
 			var square_hit = data;
@@ -92,12 +95,13 @@ function send_attack(row, col, fturn = turn) {
 					console.log(`Invalid data: ${data}, expected state ${states.empty} or ${states.ship}`);
 			}
 		} else {
-			if (turn > fturn + 2) return;
+			if (stop_resend(fturn)) return;
 			setTimeout(send_attack.bind(null, row, col, fturn), interval);
 		}
 	});
 }
 
+// wait for enemy to make his move, then reveal the square and let player make his move
 function wait(fturn = turn) {
 	ttt = Date.now(); // for debugging
 
@@ -107,10 +111,10 @@ function wait(fturn = turn) {
 			var state = allyGameBoard[data.row][data.col];
 			if (state == states.sunk || state == states.miss) {
 				console.log(`Received wrong attack coordinates: ${data.row}${data.col}\nState: ${state}`);
-				if (turn > fturn + 2) return;
+				if (stop_resend(fturn)) return;
 				setTimeout(wait, interval);
 				return;
-			} else if (turn > fturn + 2) return;
+			} else if (stop_resend(fturn)) return;
 
 			++turn;
 			console.log('a' + data.row + data.col + ' was hit');
@@ -149,7 +153,7 @@ function wait(fturn = turn) {
 			}
 			// wait for transition animation, then go to enemy gameboard
 			if (!isGameOver()) {
-				setTimeout(() => scroll_to('enemy'), 1000);
+				setTimeout(() => scroll_to('enemy'), animationTime);
 			}
 
 			// resend until enemy receives it
@@ -159,7 +163,8 @@ function wait(fturn = turn) {
 					debugger;
 					ttt = Date.now();
 				} // debug if game stuck
-				if (turn > fturn + 2) return;
+				if (stop_resend(fturn)) return;
+
 				csmPush('sendReveal', {
 					row: row,
 					col: col,
@@ -169,13 +174,13 @@ function wait(fturn = turn) {
 			})();
 
 		} else {
-			if (turn > fturn + 2) return;
+			if (stop_resend(fturn)) return;
 			setTimeout(wait, interval);
 		}
 	});
 }
 
-// scroll to gameboard
+// scroll to a gameboard
 // side = {'ally','enemy'}
 function scroll_to(side) {
 	var board = $(`#${side}-gameboard`);
@@ -189,6 +194,7 @@ function scroll_to(side) {
 
 // will continue spamming server with AJAX requests, so close the game when it ends!
 function game_over(result, revealObj) {
+	dieTimer = Date.now();
 	$('#enemy-gameboard')[0].removeEventListener('click', fireTorpedo);
 	var indicator = $('#turn-indicator')[0];
 	var display_msg, alert_msg;
@@ -205,8 +211,20 @@ function game_over(result, revealObj) {
 	setTimeout(() => {
 		indicator.style.color = 'black';
 		indicator.innerText = display_msg;
-		setTimeout(() => alert(alert_msg), 50);
-	}, animationTime);
+		setTimeout(() => alert(alert_msg), 300);
+	}, animationTime + 100);
+
+	console.log('Game Over. Stop execution in ' + dieTime / 1e3 + ' seconds.');
+}
+
+// return true to stop resending ajax request
+function stop_resend(fturn) {
+	if (turn > fturn + 2) return true;
+	if (isGameOver() && Date.now() - dieTimer > dieTime) {
+		console.log('Game is over. Execution stopped.');
+		return true;
+	}
+	return false;
 }
 
 //function isEmpty(obj) {
@@ -222,7 +240,7 @@ function isSmartphone() {
 	return $(window).height() > $(window).width();
 }
 
-// this function is called before states is defined, so use 0 and 1 instead
+// this function is called before states is defined, so use 0 and 1 instead of states variable
 function generateGameboard(ships) {
 	var gameboard = Array(rows).fill().map(_ => Array(cols).fill(0));
 	ships.sort((a, b) => b - a); // sort in descending order to make sorting easier
