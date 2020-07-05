@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A Very Simple Battleship Game</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+
+    <h1>Battleship</h1>
+    <p>Click the board to fire at a ship. Try to sink every battleship!</p>
+    <br>
+    <p>Server: <b></b></p>
+    <p>d_name: <b></b></p>
+
+    <div class="empty-space"></div>
+
+    <h2 id='ally-gameboard-text'>Ally Gameboard</h2>
+    <div id="ally-gameboard" class="gameboard"></div>
+
+    <div class="empty-space"></div>
+
+    <h2 id='enemy-gameboard-text'>Enemy Gameboard</h2>
+    <div id="enemy-gameboard" class="gameboard"></div>
+
+    <h2 id='turn-indicator'>&nbsp;</h2>
+
+    <div class="empty-space"></div>
+
+    <script src="js/battleship_func.js"></script>
+    <script src="js/battleship.js"></script>
+</body>
+
+</html>
